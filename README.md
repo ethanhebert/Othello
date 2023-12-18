@@ -1,5 +1,7 @@
 # Othello
 
+Play another human or a computer in Othello! Fit with all game rules and legal move recommendation.
+
 ## NOTE
 This is an unfinished project. It does not implement the mini-max algorithm. However, a player can still compete against the computer with a random selection algorithm. WALL-E and HAL modes will not work properly as they are functioning off of an unfinished mini-max algorithm. Only use C-3PO and Human. I am more posting this for the UI.
 
