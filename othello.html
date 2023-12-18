@@ -1,0 +1,68 @@
+<!-- 
+Ethan Hebert
+10381833
+11-13-23
+Assignment 3 - Othello with Minimax and Alpha-Beta Pruning
+This program implements a fully-functioning Othello board game made for 2 players as a web-based application.
+A user can play another human or one of three AI's of increasing difficulty.
+The first AI, C-3PO, chooses a next legal move at total random with no form of intelligence.
+The second AI, Wall-E, utilizes a heuristic, minimax, and alpha-beta pruning to a shallow amount of layers to choose a next best move.
+The third AI, HAL, utilizes a heuristic, minimax, and alpha-beta pruning to a deep amount of layers to choose a next best move.
+A user can also watch 2 AI's play each other.
+Extra tools can be utilized within the terminal in a browser.
+-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="Othello" content="Home"/>
+        <title>Othello</title>
+
+        <!-- Link to CSS file -->
+        <link rel="stylesheet" type="text/css" href="othello.css">
+
+        <!-- Favicon -->
+		<link rel="icon" type="image/x-icon" href="./favicon.png"/>
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <!-- Whole screen -->
+        <div id="window">
+            <!-- Left panel - words and buttons -->
+            <div id="instructions">
+                <!-- Title at top of page -->
+                <div id="header">Othello</div>
+                <div id="subheader">Play a friend or a minimax algorithm.</div>
+                <!-- Buttons at bottom of page -->
+                <div id="settingsButtons">
+                    <!-- Choose white and black players -->
+                    <div id="playerSelectButtons">
+                        <button class="playerSelect blackPiece" id="blackPlayerSelect" onclick="flipPlayerSelect('black')">Human</button>
+                        <button class="playerSelect whitePiece" id="whitePlayerSelect" onclick="flipPlayerSelect('white')">Human</button>
+                    </div>
+                    <!-- Button to start game or return to menu if in game -->
+                    <div id="startMenu">
+                        <button id="startMenuButton" onclick="startGame()">Start Game</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Right panel - game board and pieces -->
+            <div id="game">
+                <div class="grids" id="boardGrid"></div>
+                <div class="grids" id="piecesGrid"><div>
+            </div>
+        </div>
+
+        <!-- Link to JS file -->
+        <script src="./othello.js"></script>
+    </body>
+</html>

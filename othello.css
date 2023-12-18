@@ -1,0 +1,177 @@
+/* 
+Ethan Hebert
+10381833
+11-13-23
+Assignment 3 - Othello with Minimax and Alpha-Beta Pruning
+This program implements a fully-functioning Othello board game made for 2 players as a web-based application.
+A user can play another human or one of three AI's of increasing difficulty.
+The first AI, C-3PO, chooses a next legal move at total random with no form of intelligence.
+The second AI, Wall-E, utilizes a heuristic, minimax, and alpha-beta pruning to a shallow amount of layers to choose a next best move.
+The third AI, HAL, utilizes a heuristic, minimax, and alpha-beta pruning to a deep amount of layers to choose a next best move.
+A user can also watch 2 AI's play each other.
+Extra tools can be utilized within the terminal in a browser.
+*/
+
+:root {
+    --black: #1E2019;
+    --white: #D3D0CB;
+    --yellow: #E2C044;
+    --green: #587B7F;
+  }
+
+body {
+    background-color: var(--black);
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 95vh;
+}
+
+/* All content stored within this container */
+#window {
+    width: 90vw;
+    height: 90vh;
+    display: flex;
+}
+
+/* Left panel - words and buttons */
+#instructions {
+    width: 50%;
+    height: 100%;
+}
+
+/* Title at top of page */
+#header {
+    font-size: 5vw;
+    color: var(--white);
+    text-align: left;
+}
+
+#subheader {
+    font-size: 1.5vw;
+    color: var(--white);
+    text-align: left;
+    margin-bottom: 42vh;
+}
+
+/* Ability to select black and white players */
+#settingsButtons {
+    display: flex;
+    flex-direction: column;
+}
+
+#playerSelectButtons {
+    display: flex;
+    flex-wrap: none;
+    margin-bottom: 3vh;
+}
+
+.playerSelect {
+    border-radius: 50%;
+    font-size: 1.5vw;
+    width: 15%;
+    aspect-ratio: 1/1;
+    font-family: 'Montserrat', sans-serif;
+    margin-right: 1vw;
+}
+
+#blackPlayerSelect:hover {
+    border: 1px solid var(--green);
+    color: var(--green);
+}
+
+#whitePlayerSelect:hover {
+    background-color: var(--green);
+}
+
+#blackWin {
+    border: 1px solid var(--green);
+    color: var(--green);
+}
+
+#whiteWin {
+    background-color: var(--green);
+}
+
+/* Button to start game or return to menu if in game */
+#startMenuButton {
+    border-radius: 0;
+    border: 1px solid var(--white);
+    background-color: var(--black);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3vw;
+    padding: 2px;
+    width: 28vw;
+}
+
+#startMenuButton:hover {
+    border: 1px solid var(--green);
+    color: var(--green);
+}
+
+/* Right panel - game board itself */
+#game {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.grids {
+    height: 85%;
+    aspect-ratio: 1/1;
+    display: grid;
+    position: fixed;
+}
+
+/* Back grid for the board - just for display */
+#boardGrid {
+    background-color: var(--green);
+    z-index: -10;
+}
+
+.boardSquare {
+    border: 1px solid var(--black);
+}
+
+/* Hovering front grid which holds pieces and selectability */
+#piecesGrid {
+    background-color: transparent;
+    z-index: 10;
+}
+
+.piece {
+    border-radius: 50%;
+    margin: 10%;
+}
+
+/* Different types of pieces */
+.blackPiece {
+    color: var(--white);
+    background-color: var(--black);
+    border: 1px solid var(--white);
+}
+
+.whitePiece {
+    color: var(--black);
+    background-color: var(--white);
+    border: 1px solid var(--black);
+}
+
+.potentialBlackPiece {
+    background-color: transparent;
+    border: 1px solid var(--black);
+}
+
+.potentialWhitePiece {
+    background-color: transparent;
+    border: 1px solid var(--white);
+}
+
+.noPiece {
+    background-color: transparent;
+    border: none;
+}
